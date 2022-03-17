@@ -12,7 +12,8 @@ let exercises = [
 	"Seitheben",
 	"Preacher Curls",
 	"Seilzug am Turm",
-	"Bauchpresse"
+	"Bauchpresse",
+	"Cable Jumps"
 ];
 
 let sets = [
