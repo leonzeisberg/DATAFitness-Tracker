@@ -12,8 +12,7 @@ let exercises = [
 	"Seitheben",
 	"Preacher Curls",
 	"Seilzug am Turm",
-	"Bauchpresse",
-	"Cable Jumps"
+	"Bauchpresse"
 ];
 
 let sets = [
@@ -103,6 +102,7 @@ function setup() {
 	training_day = getTrainingDay()
 	current_exercise = plan[training_day][0];
 	displayTrainingData(current_exercise);
+	prompt("Trainingsplan ID: ");
 }
 
 // set number input placeholder to weight of last session
