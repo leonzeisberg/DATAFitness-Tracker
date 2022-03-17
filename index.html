@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+	<link rel="manifest" href="manifest.json">
+	<script src="ascript.js" defer></script>
+	<title>DATAFitness</title>
+
+	<style>
+
+		body {
+			background-color: white;
+			font-family: poppins;
+		}
+
+		.center {
+			display: flex;
+			justify-content: center;
+		}
+
+		#logo {
+			margin-top: 20vw;
+			max-width: 80%;
+		}
+
+		h2 {
+			margin-top: 20vw;
+			margin-bottom: 0px;
+		}
+
+		h3 {
+			margin-top: 0px;
+		}
+
+		#play_btn {
+			font-size: large;
+			border: 1px solid rgba(0, 0, 200, 0.8);
+			padding: 3%;
+			margin-top: 10vw;
+			max-width: 45vw;
+		}
+
+		.footer {
+			position: absolute;
+			bottom: 1vh;
+			left: 0;
+			right: 0;
+			width: 30%;
+			margin-left: auto;
+			margin-right: auto;
+			font-size: 0.6rem;
+
+		}
+
+	</style>
+
+</head>
+<body onload="displayTraining()">
+	<div class="center">
+
+		<img id="logo" src="./images/gym-7000637_1280.png" alt="">
+
+	</div>
+	<div id="text">
+
+		<h2 class="center">Taner Aliev</h2>
+		<h3 id="plan" class="center"></h3>
+
+	</div>
+	<div class="center">
+			<h2 onclick="startWorkout()" id="play_btn">GIB IHM</h2>
+	</div>
+
+	<footer class="footer">© Leon Zeisberg 2022</footer>
+</body>
+</html>

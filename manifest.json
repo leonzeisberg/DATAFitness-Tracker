@@ -1,0 +1,10 @@
+{
+	"name": "DATAFitness",
+	"short_name": "DATAFitness",
+	"theme_color": "#ffc300",
+	"background_color": "#ffffff",
+	"display": "fullscreen",
+	"orientation": "portrait",
+	"scope": "/",
+	"start_url": "/"
+  }
