@@ -62,7 +62,7 @@ function getTrainingDay() {
 	var alter = heutesek - sekunden_geb;
 
 	
-	return (Math.floor(alter/(24 * 60 * 60 * 1000)) % 3);
+	return (Math.floor(alter/(24 * 60 * 60 * 1000)) % 3) -2;
 }
 
 // display current training day
