@@ -62,7 +62,7 @@ function getTrainingDay() {
 	var alter = heutesek - sekunden_geb;
 
 	
-	return (Math.floor(alter/(24 * 60 * 60 * 1000)) % 3) -2;
+	return (Math.floor(alter/(24 * 60 * 60 * 1000)) % 3);
 }
 
 // display current training day
@@ -86,13 +86,13 @@ function displayTraining() {
 // get from index.html to exercise.html
 
 function startWorkout() {
-	const sound = new Audio ("done.mp3");
+	const sound = new Audio ("./sounds/done.mp3");
 	sound.play();
 	if (!regeneration) {
 		location = "exercise.html";
 	}
-	else{
-	location = "congrats.html";
+	else {
+		location = "congrats.html";
 	}
 }
 
@@ -102,7 +102,6 @@ function setup() {
 	training_day = getTrainingDay()
 	current_exercise = plan[training_day][0];
 	displayTrainingData(current_exercise);
-	prompt("Trainingsplan ID: ");
 }
 
 // set number input placeholder to weight of last session
