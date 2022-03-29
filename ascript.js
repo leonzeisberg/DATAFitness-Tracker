@@ -107,8 +107,6 @@ function setup() {
 function managePlaceholder(training_day, counter) {
 	weight_local = "weight:" + String(training_day) + String(counter);
 
-	console.log(weight_local);
-
 	document.getElementById("weight-input").placeholder = localStorage.getItem(weight_local) + " kg";
 }
 
