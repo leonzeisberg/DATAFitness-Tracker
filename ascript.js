@@ -86,8 +86,6 @@ function displayTraining() {
 // get from index.html to exercise.html
 
 function startWorkout() {
-	const sound = new Audio ("./sounds/done.mp3");
-	sound.play();
 	if (!regeneration) {
 		location = "exercise.html";
 	}
@@ -117,10 +115,8 @@ function managePlaceholder(training_day, counter) {
 // next button pressed => cycle between exercises
 
 let counter = 0;
-const sound = new Audio ("./sounds/done.mp3");
 
 function nextExercise() {
-	sound.play();
 
 	if (document.getElementById("weight-input").value != "" && counter <= 6) {
 
