@@ -73,19 +73,13 @@ function displayTraining() {
 
 	if (training_day == 0) {
 		document.getElementById("plan").textContent = "Training B";
-		training_day = 1;
-		break;
 	}
 	else if (training_day == 1) {
 		document.getElementById("plan").textContent = "Regeneration";
 		regeneration = true;
-		training_day = 2;
-		break;
 	}
 	else if (training_day == 2) {
 		document.getElementById("plan").textContent = "Training A";
-		training_day = 0;
-		break;
 	}
 }
 
