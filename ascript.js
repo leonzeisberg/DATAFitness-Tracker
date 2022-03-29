@@ -72,14 +72,14 @@ function displayTraining() {
 	training_day = getTrainingDay();
 
 	if (training_day == 0) {
-		document.getElementById("plan").textContent = "Training A";
-	}
-	else if (training_day == 1) {
 		document.getElementById("plan").textContent = "Training B";
 	}
-	else if (training_day == 2) {
+	else if (training_day == 1) {
 		document.getElementById("plan").textContent = "Regeneration";
 		regeneration = true;
+	}
+	else if (training_day == 2) {
+		document.getElementById("plan").textContent = "Training A";
 	}
 }
 
