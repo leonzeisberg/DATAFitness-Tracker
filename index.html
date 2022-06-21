@@ -34,7 +34,7 @@
 		const startdatesec = new Date(2022, 1, 15).getTime();
 		var todaysec = new Date().getTime();
 		var dayspassed = Math.floor((todaysec - startdatesec)/(24 * 60 * 60 * 1000));
-		var value = dayspassed % 4;
+		var value = dayspassed % parseInt(localStorage.getItem('split'));
 
 		document.querySelectorAll('p.button')[value].classList.value += ' selected'
 		localStorage.setItem('selectedDay', String(value))

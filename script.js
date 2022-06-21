@@ -16,9 +16,20 @@ const P0039 = new Plan ("Igor Maciejewski", "P0039", [
 	["Regeneration"]
 ]);
 
+const P0038 = new Plan ("Taner Aliev", "P0038", [
+	["Training A", 0, 1, 2, 3, 4, 26],
+	["Training B", 6, 7, 8, 21, 10, 27, 5],
+	["Regeneration"]
+]);
+
+const PLAN = {
+	"P0039":P0039,
+	"P0038":P0038
+}
+
 const EXERCISES = [
 	["Bankdrücken", "https://modusx.de/wp-content/uploads/2021/01/bankdruecken-langhantel.gif"],
-	["Schrägbankdrücken", "https://modusx.de/wp-content/uploads/2021/01/kurzhantel-schraegbankdruecken.gif"],
+	["Schrägbankdrücken Kurzhantel", "https://modusx.de/wp-content/uploads/2021/01/kurzhantel-schraegbankdruecken.gif"],
 	["Crossover", "https://modusx.de/wp-content/uploads/2021/01/cable-fly-cablecross.gif"],
 	["Rudern Langhantel", "https://modusx.de/wp-content/uploads/2021/03/langhantelrudern-obergriff.gif"],
 	["Latzug", "https://modusx.de/wp-content/uploads/2021/03/klassische-latziehen-zur-brust.gif"],
@@ -44,8 +55,31 @@ const EXERCISES = [
 	["Trizeps Pushdown", "https://modusx.de/wp-content/uploads/2021/07/trizeps-pushdown-kabelzug-seil.gif"],
 	["Unterarm Curls", "https://modusx.de/wp-content/uploads/2021/07/unterarm-curls-sitzend-langhantel.gif"],
 	["Front Raises", "https://modusx.de/wp-content/uploads/2020/11/frontheben-kurzhanteln.gif"],
-	["Klimmzüge Untergriff", "https://modusx.de/wp-content/uploads/2021/03/klimmzuege-untergriff-chin-up.gif"]
+	["Klimmzüge Untergriff", "https://modusx.de/wp-content/uploads/2021/03/klimmzuege-untergriff-chin-up.gif"],
+	["Wadenheben Stehend", "https://modusx.de/wp-content/uploads/2021/10/wadenheben-stehend-an-der-multipresse-mit-block.gif"],
+	["Leg Raises Hängend", "https://modusx.de/wp-content/uploads/2021/10/beinheben-haengend-fuer-die-seitlichen-bauchmuskeln-seitlich.gif"]
 ];
+
+// Select User and plan 
+
+var user;
+
+function selectUser() {
+	if(!localStorage.getItem('username')){
+		localStorage.clear()
+		console.log("LocalStorage cleared")
+		username = prompt("Trainingsplan ID: ");
+		if(username in PLAN) {
+			localStorage.setItem('username', username);
+			localStorage.setItem('split', PLAN[username].split);
+			location.reload()
+		}
+		else {
+			alert('Ungültige Trainingsplan ID!');
+			location = 'index.html';
+		}
+	}
+}
 
 // get training day
 
@@ -61,8 +95,9 @@ function selectTraining(day) {
 // display correct amount of buttons
 
 function reduceButtons() {
+	selectUser();
 	for (let [index, elem] of document.querySelectorAll('p.button').entries()) {
-		if (index > P0039.split) {
+		if (index > PLAN[localStorage.getItem('username')].split) {
 			document.querySelectorAll('p.button')[index-2].style.display = "none"
 		}
 	}
@@ -85,7 +120,7 @@ function startWorkout() {
 
 function setup() {
 	DAY = parseInt(localStorage.getItem('selectedDay'));
-	current_exercise = P0039.exercises[DAY][1];
+	current_exercise = PLAN[localStorage.getItem('username')].exercises[DAY][1];
 	displayTrainingData(current_exercise);
 }
 
@@ -111,13 +146,13 @@ let weight_lifted = 0;
 
 function nextExercise() {
 
-	if (counter <= P0039.exercises[DAY].length -1) {
+	if (counter <= PLAN[localStorage.getItem('username')].exercises[DAY].length -1) {
 
 		localStorage.setItem("sets:" + String(DAY) + String(counter), String(document.getElementById("sets").value));
 		localStorage.setItem("reps:" + String(DAY) + String(counter), String(document.getElementById("reps").value));
 		localStorage.setItem("weight:" + String(DAY) + String(counter), String(document.getElementById("weight").value));
 
-		current_exercise = P0039.exercises[DAY][counter];
+		current_exercise = PLAN[localStorage.getItem('username')].exercises[DAY][counter];
 		displayTrainingData(current_exercise);
 	}
 	else {
