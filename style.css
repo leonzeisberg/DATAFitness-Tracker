@@ -1,6 +1,7 @@
 body {
 	background-color: white;
 	font-family: poppins;
+	overflow: auto;
 }
 
 .header {
@@ -104,4 +105,17 @@ body {
 .captioning {
 	font-size: smaller;
 	margin-bottom: 2px;
+}
+
+.info-section {
+	background-color: whitesmoke;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 8vw;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.congrats-img {
+	max-width: 60vw;
 }

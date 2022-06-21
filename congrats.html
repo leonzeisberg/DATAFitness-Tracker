@@ -4,57 +4,58 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 	<title>DATAFitness</title>
 
-	<script src="ascript.js" defer></script>
-
-	<style>
-
-		body {
-			background-color: white;
-			font-family: poppins;
-		}
-
-		.center {
-			display: flex;
-			justify-content: center;
-		}
-
-		#trophy {
-			margin-top: 20vw;
-			max-width: 80vw;
-		}
-
-		h2 {
-			margin-top: 20vw;
-			margin-bottom: 0px;
-		}
-
-		h3 {
-			margin-top: 0px;
-		}
-
-		#play_btn {
-			margin-top: 20vw;
-			max-width: 45vw;
-		}
-
-	</style>
+	<script src="script.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 </head>
-<body onload="displayWeightLifted()">
+<body>
+	<header class="center header">
+		<img class="header_image" src="./images/logo.png" alt="">
+	</header>
 	<div class="center">
-
-		<img id="trophy" src="./images/congrats.png" alt="">
-
+		<img class="congrats-img" src="./images/congrats.png" alt="">
 	</div>
-	<div id="text">
+	<p class="center">Training beendet!</p>
+	<div class="center info-section">
+		<h3>Dein Fortschritt</h3>
 
-		<h2 class="center">HERZLICHEN GLÜCKWUNSCH</h2>
-		<h3 id="plan" class="center">Training beendet</h3>
-		<h3 class="center" id="weight-lifted"></h3>
+		<canvas id="weight-ges" style="width:100%;max-width:90vw"></canvas>
 
+		<script>
+		var xDates = ["18. Jan", "31. Jan", "Heute"];
+		var yWeightsGes = [28300, 26840, 28000, 32400];
+
+		new Chart("weight-ges", {
+		type: "line",
+		data: {
+			labels: xDates,
+			datasets: [{
+			fill: false,
+			lineTension: 0,
+			backgroundColor: "rgba(0,0,255,1.0)",
+			borderColor: "rgba(0,0,255,0.1)",
+			data: yWeightsGes
+			}]
+		},
+		options: {
+			legend: {display: false},
+			title: {
+				display:true,
+				text:"Bewegtes Gesamtgewicht in KG"
+			},
+			scales: {
+			yAxes: [{ticks: {min: Math.min(...yWeightsGes) - 1000, max: Math.max(...yWeightsGes) + 1000}}],
+			}
+		}
+		});
+		</script>
+	</div>
+	<div>
+		<p class="center button filled centerh">Einzelne Übungen</p>
 	</div>
 </body>
 </html>
