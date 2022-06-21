@@ -22,11 +22,11 @@
 	</div>
 	<div id="text">
 
-		<p class="center button">Training A</p>
-		<p class="center button">Training B</p>
-		<p class="center button"> Training C</p>
-		<p class="center button"> Training D</p>
-		<p class="center button"> Training E</p>
+		<p class="center button" onclick="selectTraining(0)">Training A</p>
+		<p class="center button" onclick="selectTraining(1)">Training B</p>
+		<p class="center button" onclick="selectTraining(2)"> Training C</p>
+		<p class="center button" onclick="selectTraining(3)"> Training D</p>
+		<p class="center button" onclick="selectTraining(4)"> Training E</p>
 		<p class="center button">Regeneration</p>
 
 	</div>
@@ -37,6 +37,7 @@
 		var value = dayspassed % 4;
 
 		document.querySelectorAll('p.button')[value].classList.value += ' selected'
+		localStorage.setItem('selectedDay', String(value))
 	</script>
 	<div>
 			<p class="center button filled centerh" onclick="startWorkout()">Trainig starten</p>

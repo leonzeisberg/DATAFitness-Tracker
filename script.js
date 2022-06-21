@@ -7,10 +7,6 @@ class Plan {
 		this.exercises = exercises;
 		this.split = exercises.length;
 	}
-
-	getTraining(day) {
-		return this.exercises[day];
-	}
 }
 
 const P0039 = new Plan ("Igor Maciejewski", "P0039", [
@@ -55,13 +51,11 @@ const EXERCISES = [
 
 let DAY;
 
-function getTrainingDay(split) {
-	const startdatesec = new Date(2022, 1, 15).getTime();
-	var todaysec = new Date().getTime();
-	var dayspassed = Math.floor((todaysec - startdatesec)/(24 * 60 * 60 * 1000));
-
-	DAY = (dayspassed % split);
-	return DAY;
+function selectTraining(day) {
+	selected = parseInt(localStorage.getItem('selectedDay'))
+	document.querySelectorAll('p.button')[selected].classList.value = 'center button'
+	localStorage.setItem('selectedDay', String(day));
+	document.querySelectorAll('p.button')[day].classList.value += ' selected'
 }
 
 // display correct amount of buttons
@@ -90,7 +84,7 @@ function startWorkout() {
 // setup exercise.html
 
 function setup() {
-	DAY = getTrainingDay(P0039.split);
+	DAY = parseInt(localStorage.getItem('selectedDay'));
 	current_exercise = P0039.exercises[DAY][1];
 	displayTrainingData(current_exercise);
 }
