@@ -16,8 +16,8 @@ class Plan {
 const P0039 = new Plan ("Igor Maciejewski", "P0039", [
 	["Split 1", 0, 1, 2, 20, 21, 22, 23], 
 	["Split 2", 4, 4, 12, 3, 7, 8, 24], 
-	["Regeneration"], 
-	["Split 3", 6, 5, 0, 7, 25]
+	["Split 3", 6, 5, 0, 7, 25],
+	["Regeneration"]
 ]);
 
 const EXERCISES = [
@@ -56,16 +56,11 @@ const EXERCISES = [
 let DAY;
 
 function getTrainingDay(split) {
-	const startday = 15;
-	const startmonth = 2;
-	const startyear = 2022;
-	const startdate = new Date(startyear, startmonth -1, startday);
-	var heute = new Date();
-	var sekunden_geb = startdate.getTime();
-	var heutesek = heute.getTime();
-	var alter = heutesek - sekunden_geb;
+	const startdatesec = new Date(2022, 1, 15).getTime();
+	var todaysec = new Date().getTime();
+	var dayspassed = Math.floor((todaysec - startdatesec)/(24 * 60 * 60 * 1000));
 
-	DAY = (Math.floor(alter/(24 * 60 * 60 * 1000)) % split);
+	DAY = (dayspassed % split);
 	return DAY;
 }
 
@@ -73,23 +68,7 @@ function getTrainingDay(split) {
 
 let regeneration = false;
 
-function displayTraining() {
-	if (!localStorage.getItem("planId")) {
-		PLAN_ID = prompt("Trainigsplan ID: ");
-		localStorage.setItem("planId", PLAN_ID);
-	}
-	let trainingday = P0039.getTraining(getTrainingDay(P0039.exercises.length))[0];
-	document.getElementById("plan").textContent = trainingday;
-	if (trainingday == "Regeneration") {
-		regeneration = true;
-	}
-
-	document.getElementById("username").textContent = P0039.username;
-}
-
 function startWorkout() {
-	const sound = new Audio ("./sounds/done.mp3");
-	sound.play();
 	if (!regeneration) {
 		location = "exercise.html";
 	}
@@ -101,7 +80,7 @@ function startWorkout() {
 // setup exercise.html
 
 function setup() {
-	training_day = getTrainingDay(P0039.split)
+	DAY = getTrainingDay(P0039.split);
 	current_exercise = P0039.exercises[DAY][1];
 	displayTrainingData(current_exercise);
 }
@@ -111,60 +90,43 @@ function setup() {
 function displayTrainingData(exercise) {
 
 	let title = document.getElementById("exercise-title");
+	console.log(EXERCISES[exercise][0]);
 	title.textContent = EXERCISES[exercise][0];
 
-	let set = document.getElementById("sets");
-	set.textContent = "🤷🏿‍♂️";
-
-	let rep = document.getElementById("reps");
-	rep.textContent = "🤷🏿‍♂️";
-
 	document.getElementById("tutorial_img").src = EXERCISES[exercise][1];
+
+	counter ++;
+
+	managePlaceholder(counter);
 }
 
 // next button pressed => cycle between exercises
 
 let counter = 1;
 let weight_lifted = 0;
-const sound = new Audio ("./sounds/done.mp3");
 
 function nextExercise() {
-	sound.play();
 
-	if (document.getElementById("weight-input").value != "" && counter <= P0039.exercises[DAY].length) {
+	if (counter <= P0039.exercises[DAY].length -1) {
 
-		managePlaceholder(counter);
+		localStorage.setItem("sets:" + String(DAY) + String(counter), String(document.getElementById("sets").value));
+		localStorage.setItem("reps:" + String(DAY) + String(counter), String(document.getElementById("reps").value));
+		localStorage.setItem("weight:" + String(DAY) + String(counter), String(document.getElementById("weight").value));
 
 		current_exercise = P0039.exercises[DAY][counter];
-		console.log(current_exercise);
 		displayTrainingData(current_exercise);
-
-		localStorage.setItem("weight:" + String(DAY) + String(counter), String(document.getElementById("weight-input").value));
-
-		counter ++;
-
-		weight_lifted += document.getElementById("weight-input").value * 12 * 4;
-
-		document.getElementById("weight-input").value = "";
 	}
-	if (counter >= P0039.exercises[DAY].length + 2) {
-		localStorage.setItem("weight_lifted", String(weight_lifted));
+	else {
 		location = "congrats.html";
 	}
-}
-
-// display weight lifted
-
-function displayWeightLifted() {
-	document.getElementById("weight-lifted").textContent = "Gewicht bewegt: " + localStorage.getItem("weight_lifted") + " kg";
 }
 
 // set number input placeholder to weight of last session
 
 function managePlaceholder(counter) {
-	weight_local = "weight:" + String(DAY) + String(counter);
+	ref_local = String(DAY) + String(counter);
 
-	console.log(weight_local);
-
-	document.getElementById("weight-input").placeholder = localStorage.getItem(weight_local) + " kg";
+	document.getElementById("sets").value = localStorage.getItem("sets:" + ref_local);
+	document.getElementById("reps").value = localStorage.getItem("reps:" + ref_local);
+	document.getElementById("weight").value = localStorage.getItem("weight:" + ref_local);
 }

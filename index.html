@@ -4,74 +4,41 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 	<link rel="manifest" href="manifest.json">
-	<script src="ascript.js" defer></script>
+	<script src="script.js" defer></script>
 	<title>DATAFitness</title>
 
-	<style>
-
-		body {
-			background-color: white;
-			font-family: poppins;
-		}
-
-		.center {
-			display: flex;
-			justify-content: center;
-		}
-
-		#logo {
-			margin-top: 20vw;
-			max-width: 80%;
-		}
-
-		h2 {
-			margin-top: 20vw;
-			margin-bottom: 0px;
-		}
-
-		h3 {
-			margin-top: 0px;
-		}
-
-		#play_btn {
-			font-size: large;
-			border: 1px solid rgba(0, 0, 200, 0.8);
-			padding: 3%;
-			margin-top: 10vw;
-			max-width: 45vw;
-		}
-
-		.footer {
-			position: absolute;
-			bottom: 1vh;
-			left: 0;
-			right: 0;
-			width: 30%;
-			margin-left: auto;
-			margin-right: auto;
-			font-size: 0.6rem;
-
-		}
-
-	</style>
-
 </head>
-<body onload="displayTraining()">
+<body>
+	<header class="header center">
+		<p>Trainingstag auswählen</p>
+	</header>
 	<div class="center">
 
-		<img id="logo" src="./images/gym-7000637_1280.png" alt="">
+		<img class="logo" src="./images/logo.png" alt="">
 
 	</div>
 	<div id="text">
 
-		<h2 class="center" id="username"></h2>
-		<h3 id="plan" class="center"></h3>
+		<p class="center button">Training A</p>
+		<p class="center button">Training B</p>
+		<p class="center button"> Training C</p>
+		<p class="center button"> Training D</p>
+		<p class="center button">Regeneration</p>
 
 	</div>
-	<div class="center">
-			<h2 onclick="startWorkout()" id="play_btn">GIB IHM</h2>
+	<script>
+		const startdatesec = new Date(2022, 1, 15).getTime();
+		var todaysec = new Date().getTime();
+		var dayspassed = Math.floor((todaysec - startdatesec)/(24 * 60 * 60 * 1000));
+		var value = dayspassed % 4;
+
+		document.querySelectorAll('p.button')[value].classList.value += ' selected'
+	</script>
+	<div>
+			<p class="center button filled centerh" onclick="startWorkout()">Trainig starten</p>
 	</div>
 
 	<footer class="footer">© Leon Zeisberg 2022</footer>

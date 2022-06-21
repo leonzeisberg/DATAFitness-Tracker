@@ -4,98 +4,52 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
 	<title>DATAFitness</title>
 
-	<script src="ascript.js" defer></script>
-
-	<style>
-
-		body {
-			background-color: white;
-			font-family: poppins;
-		}
-
-		input {
-			font-size: large;
-			text-align: center;
-		}
-
-		.center {
-			display: flex;
-			justify-content: center;
-		}
-
-		#tutorial_img {
-			margin-top: 10vw;
-			max-width: 50vw;
-		}
-
-		h2 {
-			font-size: large;
-			margin-top: 10vw;
-			margin-bottom: -10px;
-		}
-
-		h3 {
-			margin-top: 0px;
-		}
-
-		input {
-			border-radius: 0;
-			-webkit-appearance: none;
-		}
-
-		#next_btn {
-			border: 1px solid rgba(0, 0, 200, 0.8);
-			padding: 3%;
-			margin-top: 3vh;
-			max-width: 45vw;
-		}
-
-		.form-field {
-			border: 0;
-			border-bottom: 2px solid rgba(0, 0, 200, 0.8);
-			background-color: white;
-			height: 10vw;
-			width: 20vw;
-		}
-
-		#weight {
-			margin-top: 10px;
-		}
-
-	</style>
-
+	<script src="script.js" defer></script>
 </head>
+
 <body onload="setup()">
+	<header class="center header">
+		<img class="header_image" src="./images/logo.png" alt="">
+	</header>
+	<p class="center" id="exercise-title"></p>
 	<div class="center">
 
-		<img id="tutorial_img" src="" alt="">
+		<img class="tutorial_img" id="tutorial_img" src="" alt="">
 	
 	</div>
 
-	<div>
+	<div class="input_section">
 
-		<form action="">
+		<p class="center captioning">Sätze</p>
+		<div class="center number-input">
+			<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus">-</button>
+			<input class="form-field" id="sets" type="number" min="0">
+			<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus">+</button>
+		</div>
 
-			<h2 class="center" id="exercise-title"></h2>
-			<h2 class="center" id="sets"></h2>
-			<p class="center">Sätze</p>
-			<h2 class="center" id="reps"></h2>
-			<p class="center">Wiederholungen</p>
-			<div class="center">
-				<input class="form-field" type="number" id="weight-input" placeholder="">
-			</div>
-			<p id="weight" class="center">Gewicht</p>
+		<p class="center captioning">Wiederholungen</p>
+		<div class="center number-input">
+			<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus">-</button>
+			<input class="form-field" id="reps" type="number" min="0">
+			<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus">+</button>
+		</div>
 
-		</form>
+		<p class="center captioning">Gewicht</p>
+		<div class="center number-input">
+			<button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus">-</button>
+			<input class="form-field" id="weight" type="number" min="0">
+			<button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus">+</button>
+		</div>
 
 	</div>
 
 
-	<div class="center">
-			<h2 onclick="nextExercise()" id="next_btn">NEXT</h2>
+	<div>
+			<p class="center button filled" onclick="nextExercise()" id="next_btn">Nächste Übung</p>
 	</div>
 </body>
 </html>
