@@ -1,7 +1,7 @@
 {
 	"name": "DATAFitness",
 	"short_name": "DATAFitness",
-	"theme_color": "#ffc300",
+	"theme_color": "#ffffff",
 	"background_color": "#ffffff",
 	"display": "fullscreen",
 	"orientation": "portrait",
