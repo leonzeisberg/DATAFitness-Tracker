@@ -64,7 +64,17 @@ function getTrainingDay(split) {
 	return DAY;
 }
 
-// display current training day
+// display correct amount of buttons
+
+function reduceButtons() {
+	for (let [index, elem] of document.querySelectorAll('p.button').entries()) {
+		if (index > P0039.split) {
+			document.querySelectorAll('p.button')[index-2].style.display = "none"
+		}
+	}
+}
+
+// start workout
 
 let regeneration = false;
 
