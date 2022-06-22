@@ -146,11 +146,11 @@ let weight_lifted = 0;
 
 function nextExercise() {
 
-	if (counter <= PLAN[localStorage.getItem('username')].exercises[DAY].length -1) {
+	localStorage.setItem("sets:" + String(DAY) + String(counter), String(document.getElementById("sets").value));
+	localStorage.setItem("reps:" + String(DAY) + String(counter), String(document.getElementById("reps").value));
+	localStorage.setItem("weight:" + String(DAY) + String(counter), String(document.getElementById("weight").value));
 
-		localStorage.setItem("sets:" + String(DAY) + String(counter), String(document.getElementById("sets").value));
-		localStorage.setItem("reps:" + String(DAY) + String(counter), String(document.getElementById("reps").value));
-		localStorage.setItem("weight:" + String(DAY) + String(counter), String(document.getElementById("weight").value));
+	if (counter <= PLAN[localStorage.getItem('username')].exercises[DAY].length -1) {
 
 		current_exercise = PLAN[localStorage.getItem('username')].exercises[DAY][counter];
 		displayTrainingData(current_exercise);
