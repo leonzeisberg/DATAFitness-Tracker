@@ -9,6 +9,11 @@ class Plan {
 	}
 }
 
+const P0001 = new Plan ('Coach Leon', 'P0001', [
+	["Training A", 0, 2, 6, 21, 7, 3, 4, 5],
+	["Regeneration"]
+]);
+
 const P0039 = new Plan ("Igor Maciejewski", "P0039", [
 	["Split 1", 0, 1, 2, 20, 21, 22, 23], 
 	["Split 2", 4, 4, 12, 3, 7, 8, 24], 
