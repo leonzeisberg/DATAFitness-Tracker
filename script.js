@@ -29,7 +29,8 @@ const P0038 = new Plan ("Taner Aliev", "P0038", [
 
 const PLAN = {
 	"P0039":P0039,
-	"P0038":P0038
+	"P0038":P0038,
+	"P0001":P0001
 }
 
 const EXERCISES = [
