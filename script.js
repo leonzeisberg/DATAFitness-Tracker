@@ -166,6 +166,15 @@ function nextExercise() {
 	}
 }
 
+// back button pressed => cycle back
+
+function lastExercise() {
+	if (counter > 2) {
+		counter -= 2;
+		nextExercise();
+	}
+}
+
 // set number input placeholder to weight of last session
 
 function managePlaceholder(counter) {
