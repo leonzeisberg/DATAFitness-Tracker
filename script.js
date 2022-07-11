@@ -10,7 +10,9 @@ class Plan {
 }
 
 const P0001 = new Plan ('Coach Leon', 'P0001', [
-	["Training A", 0, 2, 6, 21, 7, 3, 4, 5],
+	["Training A", 0, 1, 2, 7, 8, 6, 19, 10],
+	["Training B", 4, 3, 5, 21, 27],
+	["MWGT", 0, 1, 5, 4, 3, 21, 6],
 	["Regeneration"]
 ]);
 
